@@ -136,7 +136,7 @@ export default function NextPage() {
 
   // 버튼 핸들러
   const onExitOrPrev = () => {
-    if (step === 1) navigate('/checkin');
+    if (step === 1) navigate('/');
     else setStep(step - 1);
   };
   const onNext = () => {
@@ -151,7 +151,7 @@ export default function NextPage() {
       setAnim(true);
       setTimeout(() => {
         setAnim(false);
-        navigate('/checkin');
+        navigate('/');
       }, 2050);
     }
   };
