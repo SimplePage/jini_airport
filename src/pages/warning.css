@@ -1,0 +1,41 @@
+/* 공통 스타일 import */
+@import url('common.css');
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #fffbe6;
+}
+
+.warning-img {
+  width: 180px;
+  height: 180px;
+  margin-bottom: 30px;
+  background: url('../imgs/warning.png') no-repeat center/contain, #fffbe6;
+  /* 실제 경고 이미지가 없으면 아래 SVG로 대체 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 버튼 스타일은 common.css에서 상속 */
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+  .warning-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .warning-img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 15px;
+  }
+} 

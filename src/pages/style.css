@@ -1,0 +1,471 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    overflow: hidden;
+    /* 모바일 터치 최적화 */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #87cefa; /* 하늘색 배경 */
+}
+
+/* 구름 이미지 적용 */
+.cloud {
+    position: absolute;
+    background-size: contain; /* 이미지가 구름 크기에 맞게 조정되도록 */
+    background-repeat: no-repeat;
+    animation: moveClouds 90s linear infinite;
+}
+
+/* 구름 1 */
+.cloud:nth-child(1) {
+    left: -20%; /* 화면 왼쪽 밖에서 시작 */
+    top: 10%; /* 상단으로 올림 */
+    width: 15%; /* 구름 크기 */
+    height: 10%; /* 구름 높이 */
+    background-image: url('../imgs/cloud1.png'); /* 구름 이미지 경로 */
+}
+
+/* 구름 2 */
+.cloud:nth-child(2) {
+    left: -20%; /* 화면의 왼쪽 밖에서 시작 */
+    top: 15%; /* 상단으로 올림 */
+    width: 20%; /* 구름 크기 */
+    height: 12%; /* 구름 높이 */
+    background-image: url('../imgs/cloud2.png'); /* 구름 이미지 경로 */
+    animation-delay: -30s; /* 애니메이션 딜레이 */
+}
+
+/* 구름 3 */
+.cloud:nth-child(3) {
+    left: -20%; /* 화면의 왼쪽 밖에서 시작 */
+    top: 20%; /* 상단으로 올림 */
+    width: 25%; /* 구름 크기 */
+    height: 15%; /* 구름 높이 */
+    background-image: url('../imgs/cloud3.png'); /* 구름 이미지 경로 */
+    animation-delay: -60s; /* 애니메이션 딜레이 */
+}
+
+/* 구름이 움직이는 애니메이션 */
+@keyframes moveClouds {
+    0% {
+        transform: translateX(0); /* 구름이 시작하는 위치 */
+    }
+    100% {
+        transform: translateX(140vw); /* 화면의 오른쪽 끝까지 이동 */
+    }
+}
+/* 'imgs/hexagonImg1.jpg  */
+ /* 육각형 이미지 */
+.hexagon-container {
+    top: 30%;
+    position: relative;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.hexagon {
+    position: relative;
+    width: clamp(120px, 15vw, 200px); /* 최소 120px, 최대 200px, 기본 15vw */
+    height: clamp(120px, 15vw, 200px);
+    background-image: url('../assets/hexagonImg1.png'); /* 육각형 이미지 */
+    background-size: cover;
+    background-position: center;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); /* 육각형으로 잘라냄 */
+    margin: -5px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    /* 모바일 터치 최적화 */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    cursor: pointer;
+}
+
+/* 육각형 이미지 hover 효과 */
+.hexagon:hover {
+    transform: scale(1.1); /* 마우스를 올리면 약간 확대 */
+}
+
+/* 모바일에서 터치 효과 */
+.hexagon:active {
+    transform: scale(0.95);
+}
+
+.hexagon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #fff;
+  display: block;
+  /* 모바일 터치 최적화 */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  pointer-events: none; /* 이미지 클릭 이벤트를 부모로 전달 */
+}
+
+/* + 버튼 스타일 */
+/* .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+} */
+
+.hexagon:hover .overlay {
+    display: flex; /* 육각형을 hover하면 버튼이 보이도록 */
+}
+
+.overlay a {
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.hex-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: -25px; /* 겹치는 부분 조정 */
+  gap: clamp(15px, 2vw, 32px); /* 동적 간격 */
+}
+.hex-row-2 {
+  margin-left: 0;
+  justify-content: center;
+}
+
+.hex-row-1 {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: clamp(15px, 2vw, 32px);
+}
+
+.hex-row-2 {
+  margin-top: clamp(20px, 3vw, 32px);
+  display: flex;
+  justify-content: center;
+}
+
+.hex-row-2 .hexagon {
+  /* Center under the midpoint between the two top hexagons */
+  /* The first hexagon is 240px, the second is 200px, gap is 32px */
+  /* Offset left by half the difference plus half the gap */
+  margin-left: clamp(10px, 1.5vw, 20px);
+}
+
+.hex-row-1 .hexagon:first-child {
+  width: clamp(140px, 18vw, 240px);
+  height: clamp(140px, 18vw, 240px);
+}
+
+.bkRed {
+    background: #bf3f38 !important;
+}
+
+/* 모바일 반응형 디자인 */
+@media (max-width: 1200px) {
+  .hexagon {
+    width: clamp(100px, 12vw, 180px);
+    height: clamp(100px, 12vw, 180px);
+  }
+  
+  .hex-row-1 .hexagon:first-child {
+    width: clamp(120px, 15vw, 200px);
+    height: clamp(120px, 15vw, 200px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hexagon {
+    width: clamp(80px, 10vw, 150px);
+    height: clamp(80px, 10vw, 150px);
+    min-height: 44px; /* iOS 권장 최소 터치 영역 */
+  }
+  
+  .hex-row-1 .hexagon:first-child {
+    width: clamp(100px, 12vw, 180px);
+    height: clamp(100px, 12vw, 180px);
+  }
+  
+  .hex-row-1 {
+    gap: clamp(10px, 1.5vw, 20px);
+  }
+  
+  .hex-row-2 {
+    margin-top: clamp(15px, 2vw, 20px);
+  }
+  
+  .hex-row-2 .hexagon {
+    margin-left: clamp(5px, 1vw, 15px);
+  }
+}
+
+@media (max-width: 480px) {
+  .hexagon {
+    width: clamp(60px, 8vw, 120px);
+    height: clamp(60px, 8vw, 120px);
+  }
+  
+  .hex-row-1 .hexagon:first-child {
+    width: clamp(80px, 10vw, 140px);
+    height: clamp(80px, 10vw, 140px);
+  }
+  
+  .hex-row-1 {
+    gap: clamp(8px, 1vw, 15px);
+  }
+  
+  .hex-row-2 {
+    margin-top: clamp(10px, 1.5vw, 15px);
+  }
+  
+  .hex-row-2 .hexagon {
+    margin-left: clamp(3px, 0.5vw, 10px);
+  }
+}
+
+@media (max-width: 320px) {
+  .hexagon {
+    width: clamp(50px, 6vw, 100px);
+    height: clamp(50px, 6vw, 100px);
+  }
+  
+  .hex-row-1 .hexagon:first-child {
+    width: clamp(65px, 8vw, 120px);
+    height: clamp(65px, 8vw, 120px);
+  }
+  
+  .hex-row-1 {
+    gap: clamp(5px, 0.8vw, 10px);
+  }
+  
+  .hex-row-2 {
+    margin-top: clamp(8px, 1vw, 12px);
+  }
+}
+
+/* 가로 모드 최적화 */
+@media (orientation: landscape) and (max-height: 500px) {
+  .hexagon-container {
+    top: 20%;
+  }
+  
+  .hexagon {
+    width: clamp(60px, 8vh, 120px);
+    height: clamp(60px, 8vh, 120px);
+  }
+  
+  .hex-row-1 .hexagon:first-child {
+    width: clamp(80px, 10vh, 140px);
+    height: clamp(80px, 10vh, 140px);
+  }
+  
+  .hex-row-1 {
+    gap: clamp(8px, 1vh, 15px);
+  }
+  
+  .hex-row-2 {
+    margin-top: clamp(8px, 1vh, 12px);
+  }
+}
+
+/* Settings Button Styles */
+.settings-btn {
+  position: absolute;
+  top: 18px;
+  right: 30px;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 20;
+  transition: background 0.2s;
+  /* 모바일 터치 최적화 */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.settings-btn:hover {
+  background: #1565c0;
+}
+
+.settings-btn:active {
+  background: #1565c0;
+  transform: scale(0.98);
+}
+
+/* Modal Styles */
+.modal-bg {
+  display: none;
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  width: 100vw; 
+  height: 100vh;
+  background: rgba(0,0,0,0.3);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-bg.active { 
+  display: flex; 
+}
+
+.modal {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  padding: 32px 28px 24px 28px;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal h2 {
+  margin-bottom: 18px;
+  color: #1976d2;
+  font-size: 1.2rem;
+}
+
+.modal label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #333;
+}
+
+.modal input {
+  width: 220px;
+  padding: 8px 10px;
+  margin-bottom: 14px;
+  border-radius: 6px;
+  border: 1px solid #bdbdbd;
+  font-size: 1rem;
+}
+
+.modal .btns {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.modal .btn {
+  padding: 8px 22px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+  /* 모바일 터치 최적화 */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.modal .btn-save {
+  background: #1976d2;
+  color: #fff;
+}
+
+.modal .btn-save:hover {
+  background: #1565c0;
+}
+
+.modal .btn-save:active {
+  background: #1565c0;
+  transform: scale(0.98);
+}
+
+.modal .btn-cancel {
+  background: #eee;
+  color: #333;
+}
+
+.modal .btn-cancel:hover {
+  background: #ccc;
+}
+
+.modal .btn-cancel:active {
+  background: #ccc;
+  transform: scale(0.98);
+}
+
+/* 모바일에서 링크 터치 영역 확대 */
+@media (max-width: 768px) {
+  .settings-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .modal .btn {
+    min-height: 44px;
+    padding: 12px 24px;
+  }
+}
+
+/* 이미지 로딩 최적화 */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* 이미지 로딩 실패 시 대체 스타일 */
+img:not([src]), img[src=""], img[src*="data:image/svg+xml"] {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+}
+
+/* 구름 이미지 로딩 최적화 */
+.cloud {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* 육각형 이미지 로딩 최적화 */
+.hexagon {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* 모바일에서 이미지 압축 최적화 */
+@media (max-width: 768px) {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .hexagon img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}

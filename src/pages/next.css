@@ -1,0 +1,207 @@
+/* 공통 스타일 import */
+@import url('common.css');
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #e3f2fd;
+}
+
+.step-indicator {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.step {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #bbdefb;
+  color: #1976d2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border: 2px solid #90caf9;
+  transition: background 0.2s, color 0.2s;
+}
+
+.step.active {
+  background: #1976d2;
+  color: #fff;
+  border-color: #1976d2;
+}
+
+.step-content {
+  min-height: 220px;
+  max-height: 340px;
+  width: 370px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 30px 20px 20px 20px;
+  margin-bottom: 40px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.step-content h2 {
+  margin-bottom: 18px;
+  color: #1976d2;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.flight-list, .user-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flight-item, .user-item {
+  width: 90%;
+  background: #e3f2fd;
+  border: 2px solid #90caf9;
+  border-radius: 8px;
+  padding: 16px 18px;
+  font-size: 1.1rem;
+  color: #1976d2;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.flight-item.selected, .user-item.selected {
+  background: #1976d2;
+  color: #fff;
+  border-color: #1976d2;
+}
+
+.step-content input, .step-content select {
+  font-size: 1rem;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #bdbdbd;
+  width: 90%;
+}
+
+.airplane-seats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 auto 10px auto;
+  align-items: center;
+}
+
+.seat-row {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 2px;
+}
+
+.seat {
+  width: 38px;
+  height: 38px;
+  background: #bbdefb;
+  border: 1px solid #90caf9;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  color: #1976d2;
+  transition: background 0.2s, color 0.2s;
+  margin: 0 2px;
+  box-sizing: border-box;
+}
+
+.seat.selected {
+  background: #1976d2;
+  color: #fff;
+}
+
+.aisle {
+  width: 24px;
+  height: 38px;
+  display: inline-block;
+}
+
+.ticket {
+  background: #fffde7;
+  border: 1px solid #ffe082;
+  border-radius: 10px;
+  padding: 18px 24px;
+  text-align: center;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+/* 버튼 스타일은 common.css에서 상속 */
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+  .step-content {
+    width: 320px;
+    padding: 25px 15px 15px 15px;
+  }
+  
+  .step-content h2 {
+    font-size: 1.2rem;
+  }
+  
+  .flight-item, .user-item {
+    padding: 14px 16px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .step-indicator {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .step {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+  
+  .step-content {
+    width: 280px;
+    padding: 20px 12px 12px 12px;
+    margin-bottom: 30px;
+  }
+  
+  .step-content h2 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+  
+  .flight-item, .user-item {
+    padding: 12px 14px;
+    font-size: 0.95rem;
+  }
+  
+  .seat {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+} 
