@@ -23,6 +23,7 @@ export default function NextPage() {
   const [passenger, setPassenger] = useState('');
   const [seat, setSeat] = useState('');
   const [anim, setAnim] = useState(false);
+  const [planeAnim, setPlaneAnim] = useState(false);
 
   // 1단계: 나라 선택
   const renderStep1 = () => (
@@ -119,20 +120,27 @@ export default function NextPage() {
       {anim && (
         <div style={{display:'flex',position:'fixed',top:0,left:0,width:'100vw',height:'100vh',zIndex:999,background:'rgba(227,242,253,0.95)',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
           <div style={{width:220,height:120,position:'relative',overflow:'visible'}}>
-            <img src={plane} alt="비행기" style={{position:'absolute',left:0,top:30,width:120,height:60,transition:'transform 2s cubic-bezier(0.4,1,0.7,1)',transform:anim?'translateX(120px) translateY(-60px) scale(1.2) rotate(-10deg)':'translateX(0)'}} />
+            <img
+              src={plane}
+              alt="비행기"
+              style={{
+                position:'absolute',
+                left:0,
+                top:30,
+                width:120,
+                height:60,
+                transition:'transform 2s cubic-bezier(0.4,1,0.7,1)',
+                transform: planeAnim
+                  ? 'translateX(120px) translateY(-60px) scale(1.2) rotate(-10deg)'
+                  : 'translateX(0)'
+              }}
+            />
           </div>
           <div style={{marginTop:60,fontSize:'1.2em',color:'#1976d2',fontWeight:'bold'}}>비행기가 출발합니다!</div>
         </div>
       )}
     </>
   );
-
-  // 단계별 렌더링
-  let content;
-  if (step === 1) content = renderStep1();
-  else if (step === 2) content = renderStep2();
-  else if (step === 3) content = renderStep3();
-  else content = renderStep4();
 
   // 버튼 핸들러
   const onExitOrPrev = () => {
@@ -149,12 +157,23 @@ export default function NextPage() {
     if (step < 4) setStep(step + 1);
     else {
       setAnim(true);
+      setPlaneAnim(false);
+      setTimeout(() => {
+        setPlaneAnim(true);
+      }, 50);
       setTimeout(() => {
         setAnim(false);
+        setPlaneAnim(false);
         navigate('/');
       }, 2050);
     }
   };
+
+  let content;
+  if (step === 1) content = renderStep1();
+  else if (step === 2) content = renderStep2();
+  else if (step === 3) content = renderStep3();
+  else content = renderStep4();
 
   return (
     <div style={{maxWidth:600,margin:'0 auto',padding:'2em'}}>
