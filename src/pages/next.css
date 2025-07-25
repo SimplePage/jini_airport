@@ -39,7 +39,7 @@ body {
 
 .step-content {
   min-height: 220px;
-  max-height: 340px;
+  /* max-height: 340px; */
   width: 370px;
   background: #fff;
   border-radius: 16px;
@@ -157,7 +157,8 @@ body {
 /* 모바일 반응형 */
 @media (max-width: 768px) {
   .step-content {
-    width: 320px;
+    min-width: 200px;
+    max-width: 350px;
     padding: 25px 15px 15px 15px;
   }
   

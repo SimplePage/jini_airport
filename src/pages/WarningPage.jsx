@@ -6,9 +6,23 @@ import { useNavigate } from 'react-router-dom';
 export default function WarningPage() {
   const navigate = useNavigate();
   return (
-    <div className="warning-page" style={{padding: '2rem', textAlign: 'center'}}>
-      <div className="warning-img" style={{marginBottom: '2em'}}>
-        <svg width="120" height="120" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#fff3cd" stroke="#ff9800" strokeWidth="2"/><path d="M12 7v5" stroke="#ff9800" strokeWidth="2" strokeLinecap="round"/><circle cx="12" cy="16" r="1.2" fill="#ff9800"/></svg>
+    <div className="warning-page">
+      <div
+        style={{
+          margin: '0 auto 2em auto',
+          maxWidth: 320,
+          background: '#fff3cd',
+          border: '2px solid #ff9800',
+          borderRadius: 12,
+          padding: '2em 1em',
+          color: '#7a4f01',
+          fontWeight: 'bold',
+          fontSize: '1.2em',
+          textAlign: 'center',
+          boxShadow: '0 2px 8px rgba(255,152,0,0.08)'
+        }}
+      >
+        ⚠️ 경고: 안전을 위해 안내를 꼭 확인하세요!
       </div>
       <div className="button-group" style={{display:'flex',justifyContent:'center',gap:16}}>
         <button className="btn btn-exit" onClick={() => navigate('/')}>나가기</button>
