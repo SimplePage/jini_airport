@@ -8,8 +8,8 @@ import orange from '../assets/orange.png';
 import yellow from '../assets/yellow.png';
 import green from '../assets/green.png';
 import blue from '../assets/blue.png';
-import indigo from '../assets/Indigo.png';
 import puple from '../assets/puple.png';
+import background from '../assets/background.jpg';
 
 export default function AirportCheckInPage() {
   const navigate = useNavigate();
@@ -84,73 +84,63 @@ export default function AirportCheckInPage() {
           </div>
         </div>
       )}
-      <div className="clouds">
+      <div className="clouds"
+        style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="cloud" style={{backgroundImage: `url(${cloud})`}}></div>
         <div className="cloud" style={{backgroundImage: `url(${cloud})`}}></div>
         <div className="cloud" style={{backgroundImage: `url(${cloud})`}}></div>
       </div>
       
       {/* 7개의 이미지를 가로로 나열 */}
-      <div style={{
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        display: 'flex',
-        gap: '15px',
-        alignItems: 'center',
-        zIndex: 1
-      }}>
-        <img src={red} alt="red" style={{
-          width: 'clamp(80px, 8vw, 120px)',
-          height: 'clamp(80px, 8vw, 120px)',
-          objectFit: 'contain',
-          cursor: 'pointer',
-          transition: 'transform 0.2s ease'
-        }} onClick={() => handleImageClick('#ff0000')} />
-        <img src={orange} alt="orange" style={{
-          width: 'clamp(80px, 8vw, 120px)',
-          height: 'clamp(80px, 8vw, 120px)',
-          objectFit: 'contain',
-          cursor: 'pointer',
-          transition: 'transform 0.2s ease'
-        }} onClick={() => handleImageClick('#ff7f00')} />
-        <img src={yellow} alt="yellow" style={{
-          width: 'clamp(80px, 8vw, 120px)',
-          height: 'clamp(80px, 8vw, 120px)',
-          objectFit: 'contain',
-          cursor: 'pointer',
-          transition: 'transform 0.2s ease'
-        }} onClick={() => handleImageClick('#ffff00')} />
-        <img src={green} alt="green" style={{
-          width: 'clamp(80px, 8vw, 120px)',
-          height: 'clamp(80px, 8vw, 120px)',
-          objectFit: 'contain',
-          cursor: 'pointer',
-          transition: 'transform 0.2s ease'
-        }} onClick={() => handleImageClick('#00ff00')} />
-        <img src={blue} alt="blue" style={{
-          width: 'clamp(80px, 8vw, 120px)',
-          height: 'clamp(80px, 8vw, 120px)',
-          objectFit: 'contain',
-          cursor: 'pointer',
-          transition: 'transform 0.2s ease'
-        }} onClick={() => handleImageClick('#0000ff')} />
-        <img src={indigo} alt="indigo" style={{
-          width: 'clamp(80px, 8vw, 120px)',
-          height: 'clamp(80px, 8vw, 120px)',
-          objectFit: 'contain',
-          cursor: 'pointer',
-          transition: 'transform 0.2s ease'
-        }} onClick={() => handleImageClick('#4b0082')} />
-        <img src={puple} alt="puple" style={{
-          width: 'clamp(80px, 8vw, 120px)',
-          height: 'clamp(80px, 8vw, 120px)',
-          objectFit: 'contain',
-          cursor: 'pointer',
-          transition: 'transform 0.2s ease'
-        }} onClick={() => handleImageClick('#9400d3')} />
-      </div>
+      <div className="main-image-container">
+        {/* 첫 번째 줄 */}
+          <div className="image-row">
+            <img
+              src={red}
+              alt="red"
+              className="image-item"
+              onClick={() => handleImageClick('#ff0000')}
+            />
+            <img
+              src={orange}
+              alt="orange"
+              className="image-item"
+              onClick={() => handleImageClick('#ff7f00')}
+            />
+          </div>
+
+          {/* 두 번째 줄 */}
+          <div className="image-row">
+            <img
+              src={yellow}
+              alt="yellow"
+              className="image-item"
+              onClick={() => handleImageClick('#ffff00')}
+            />
+            <img
+              src={green}
+              alt="green"
+              className="image-item"
+              onClick={() => handleImageClick('#00ff00')}
+            />
+          </div>
+
+          {/* 세 번째 줄 */}
+          <div className="image-row">
+            <img
+              src={blue}
+              alt="blue"
+              className="image-item"
+              onClick={() => handleImageClick('#0000ff')}
+            />
+            <img
+              src={puple}
+              alt="puple"
+              className="image-item"
+              onClick={() => handleImageClick('#4b0082')}
+            />
+          </div>
+        </div>
     </>
   );
 } 
