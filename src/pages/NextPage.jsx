@@ -78,30 +78,51 @@ export default function NextPage() {
 
   // 3단계: 좌석 선택
   const renderStep3 = () => {
-    const seatMap = [
-      ['1A','1B','1C',null,'1D','1E','1F','1G'],
-      ['2A','2B','2C',null,'2D','2E','2F','2G'],
-      ['3A','3B','3C',null,'3D','3E','3F','3G']
+    const rainbowSeats = [
+      { id: 'RED', label: 'R', name: '빨강', color: '#ff0000' },
+      { id: 'ORANGE', label: 'O', name: '주황', color: '#ff7f00' },
+      { id: 'YELLOW', label: 'Y', name: '노랑', color: '#ffff00' },
+      { id: 'GREEN', label: 'G', name: '초록', color: '#00c853' },
+      { id: 'BLUE', label: 'B', name: '파랑', color: '#2962ff' },
+      { id: 'INDIGO', label: 'I', name: '남색', color: '#4b0082' },
+      { id: 'VIOLET', label: 'V', name: '보라', color: '#9400d3' }
     ];
+
     return (
       <>
-        <h2>3단계: 좌석 선택</h2>
-        <div className="airplane-seats">
-          {seatMap.map((row, i) => (
-            <div className="seat-row" key={i} style={{display:'flex',justifyContent:'center',marginBottom:8}}>
-              {row.map((s, j) => s === null ? (
-                <span className="aisle" key={j} style={{width:24}}></span>
-              ) : (
+        <h2 style={{marginBottom: 16}}>3단계: 좌석 선택</h2>
+        <div style={{display: 'flex', justifyContent: 'center', gap: 18, flexWrap: 'wrap'}}>
+          {rainbowSeats.map(s => {
+            const selected = seat === s.id;
+            return (
+              <div key={s.id} style={{display:'flex', flexDirection:'column', alignItems:'center', gap:8}}>
                 <div
-                  className={`seat${seat === s ? ' selected' : ''}`}
-                  data-seat={s}
-                  key={s}
-                  onClick={() => setSeat(s)}
-                  style={{cursor:'pointer',margin:'2px',padding:'10px 14px',border:'1px solid #bbb',borderRadius:6,background:seat===s?'#e3f2fd':'#fff'}}
-                >{s}</div>
-              ))}
-            </div>
-          ))}
+                  role="button"
+                  aria-label={`좌석 ${s.name}`}
+                  onClick={() => setSeat(s.id)}
+                  style={{
+                    width: 56,
+                    height: 56,
+                    borderRadius: 12,
+                    background: s.color,
+                    boxShadow: selected ? '0 0 0 3px #1976d2' : '0 1px 3px rgba(0,0,0,0.15)',
+                    border: selected ? '2px solid #0d47a1' : '1px solid rgba(0,0,0,0.15)',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: s.id === 'YELLOW' ? '#333' : '#fff',
+                    fontWeight: 'bold',
+                    userSelect: 'none',
+                    transition: 'transform 0.15s ease, box-shadow 0.2s ease'
+                  }}
+                >
+                  {s.label}
+                </div>
+                <div style={{fontSize: 12, color: '#555'}}>{s.name}</div>
+              </div>
+            );
+          })}
         </div>
       </>
     );
