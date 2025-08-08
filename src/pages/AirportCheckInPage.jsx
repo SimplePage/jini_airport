@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './style.css';
 import './common.css';
-import hexagonImg1 from '../assets/hexagonImg1.png';
-import hexagonImg2 from '../assets/hexagonImg2.png';
-import hexagonImg3 from '../assets/hexagonImg3.png';
-import cloud1 from '../assets/cloud1.png';
-import cloud2 from '../assets/cloud2.png';
-import cloud3 from '../assets/cloud3.png';
+import cloud from '../assets/cloud.png';
+import red from '../assets/red.png';
+import orange from '../assets/orange.png';
+import yellow from '../assets/yellow.png';
+import green from '../assets/green.png';
+import blue from '../assets/blue.png';
+import indigo from '../assets/indigo.png';
+import puple from '../assets/puple.png';
 
 export default function AirportCheckInPage() {
+  const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
   const [passengerList, setPassengerList] = useState(() => {
     try {
@@ -47,6 +50,10 @@ export default function AirportCheckInPage() {
     localStorage.removeItem('passengerList');
   };
 
+  const handleImageClick = (color) => {
+    navigate('/warning', { state: { backgroundColor: color } });
+  };
+
   return (
     <>
       <button className="settings-btn" onClick={openSettings} aria-label="설정">
@@ -78,24 +85,71 @@ export default function AirportCheckInPage() {
         </div>
       )}
       <div className="clouds">
-        <div className="cloud" style={{backgroundImage: `url(${cloud1})`}}></div>
-        <div className="cloud" style={{backgroundImage: `url(${cloud2})`}}></div>
-        <div className="cloud" style={{backgroundImage: `url(${cloud3})`}}></div>
+        <div className="cloud" style={{backgroundImage: `url(${cloud})`}}></div>
+        <div className="cloud" style={{backgroundImage: `url(${cloud})`}}></div>
+        <div className="cloud" style={{backgroundImage: `url(${cloud})`}}></div>
       </div>
-      <div className="hexagon-container">
-        <div className="hex-row hex-row-1">
-          <Link to="/warning" className="hexagon">
-            <img src={hexagonImg1} alt="hexagon1" />
-          </Link>
-          <Link to="/warning" className="hexagon">
-            <img className="bkRed" src={hexagonImg2} alt="hexagon2" />
-          </Link>
-        </div>
-        <div className="hex-row hex-row-2">
-          <Link to="/warning" className="hexagon">
-            <img src={hexagonImg3} alt="hexagon3" />
-          </Link>
-        </div>
+      
+      {/* 7개의 이미지를 가로로 나열 */}
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        display: 'flex',
+        gap: '15px',
+        alignItems: 'center',
+        zIndex: 1
+      }}>
+        <img src={red} alt="red" style={{
+          width: 'clamp(80px, 8vw, 120px)',
+          height: 'clamp(80px, 8vw, 120px)',
+          objectFit: 'contain',
+          cursor: 'pointer',
+          transition: 'transform 0.2s ease'
+        }} onClick={() => handleImageClick('#ff0000')} />
+        <img src={orange} alt="orange" style={{
+          width: 'clamp(80px, 8vw, 120px)',
+          height: 'clamp(80px, 8vw, 120px)',
+          objectFit: 'contain',
+          cursor: 'pointer',
+          transition: 'transform 0.2s ease'
+        }} onClick={() => handleImageClick('#ff7f00')} />
+        <img src={yellow} alt="yellow" style={{
+          width: 'clamp(80px, 8vw, 120px)',
+          height: 'clamp(80px, 8vw, 120px)',
+          objectFit: 'contain',
+          cursor: 'pointer',
+          transition: 'transform 0.2s ease'
+        }} onClick={() => handleImageClick('#ffff00')} />
+        <img src={green} alt="green" style={{
+          width: 'clamp(80px, 8vw, 120px)',
+          height: 'clamp(80px, 8vw, 120px)',
+          objectFit: 'contain',
+          cursor: 'pointer',
+          transition: 'transform 0.2s ease'
+        }} onClick={() => handleImageClick('#00ff00')} />
+        <img src={blue} alt="blue" style={{
+          width: 'clamp(80px, 8vw, 120px)',
+          height: 'clamp(80px, 8vw, 120px)',
+          objectFit: 'contain',
+          cursor: 'pointer',
+          transition: 'transform 0.2s ease'
+        }} onClick={() => handleImageClick('#0000ff')} />
+        <img src={indigo} alt="indigo" style={{
+          width: 'clamp(80px, 8vw, 120px)',
+          height: 'clamp(80px, 8vw, 120px)',
+          objectFit: 'contain',
+          cursor: 'pointer',
+          transition: 'transform 0.2s ease'
+        }} onClick={() => handleImageClick('#4b0082')} />
+        <img src={puple} alt="puple" style={{
+          width: 'clamp(80px, 8vw, 120px)',
+          height: 'clamp(80px, 8vw, 120px)',
+          objectFit: 'contain',
+          cursor: 'pointer',
+          transition: 'transform 0.2s ease'
+        }} onClick={() => handleImageClick('#9400d3')} />
       </div>
     </>
   );
