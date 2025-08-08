@@ -39,3 +39,38 @@ body {
     margin-bottom: 15px;
   }
 } 
+
+/* 깜빡이는 효과를 위한 애니메이션 */
+@keyframes flashEffect {
+  0% {
+    background-color: rgba(255, 255, 255, 0); /* 시작은 투명 */
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 1); /* 중간에는 완전 하얀색 */
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0); /* 끝은 다시 투명 */
+  }
+}
+
+/* flash 클래스가 있을 때 이미지 영역에만 깜빡이는 효과 적용 */
+.image-container.flash::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 1); /* 완전 하얀색 */
+  z-index: 10; /* 플래시가 이미지 위에 오도록 설정 */
+  animation: flashEffect 0.3s ease-out; /* 0.3초 동안 깜빡이는 애니메이션 */
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-container img {
+  cursor: pointer;
+}
