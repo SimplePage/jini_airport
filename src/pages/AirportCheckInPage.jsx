@@ -8,7 +8,7 @@ import orange from '../assets/orange.png';
 import yellow from '../assets/yellow.png';
 import green from '../assets/green.png';
 import blue from '../assets/blue.png';
-import indigo from '../assets/indigo.png';
+import indigo from '../assets/Indigo.png';
 import puple from '../assets/puple.png';
 
 export default function AirportCheckInPage() {
