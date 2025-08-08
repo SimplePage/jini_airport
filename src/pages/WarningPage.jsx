@@ -2,29 +2,26 @@ import React from 'react';
 import './warning.css';
 import './common.css';
 import { useNavigate } from 'react-router-dom';
+import ready from '../assets/ready.png';
 
 export default function WarningPage() {
   const navigate = useNavigate();
   return (
-    <div className="warning-page">
-      <div
-        style={{
-          margin: '0 auto 2em auto',
-          maxWidth: 320,
-          background: '#fff3cd',
-          border: '2px solid #ff9800',
-          borderRadius: 12,
-          padding: '2em 1em',
-          color: '#7a4f01',
-          fontWeight: 'bold',
-          fontSize: '1.2em',
-          textAlign: 'center',
-          boxShadow: '0 2px 8px rgba(255,152,0,0.08)'
-        }}
-      >
-        ⚠️ 경고: 안전을 위해 안내를 꼭 확인하세요!
+    <div className="warning-page" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <img
+          src={ready}
+          alt="ready"
+          style={{
+            maxWidth: '90vw',
+            maxHeight: 'calc(100vh - 120px)',
+            width: '100%',
+            height: 'auto',
+            objectFit: 'contain'
+          }}
+        />
       </div>
-      <div className="button-group" style={{display:'flex',justifyContent:'center',gap:16}}>
+      <div className="button-bar" style={{ height: 80, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 24px', width: '100%' }}>
         <button className="btn btn-exit" onClick={() => navigate('/')}>나가기</button>
         <button className="btn btn-next" onClick={() => navigate('/next')}>다음단계</button>
       </div>

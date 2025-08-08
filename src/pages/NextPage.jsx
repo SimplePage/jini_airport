@@ -176,16 +176,18 @@ export default function NextPage() {
   else content = renderStep4();
 
   return (
-    <div style={{maxWidth:600,margin:'0 auto',padding:'2em'}}>
-      <div className="step-indicator" style={{display:'flex',justifyContent:'center',gap:8,marginBottom:24}}>
-        {[1,2,3,4].map(i => (
-          <div key={i} className={`step${step===i?' active':''}`} style={{width:32,height:32,borderRadius:'50%',background:step===i?'#1976d2':'#eee',color:step===i?'#fff':'#888',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:'bold',fontSize:'1.1em'}}>{i}</div>
-        ))}
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2em' }}>
+        <div className="step-indicator" style={{display:'flex',justifyContent:'center',gap:8,marginBottom:24}}>
+          {[1,2,3,4].map(i => (
+            <div key={i} className={`step${step===i?' active':''}`} style={{width:32,height:32,borderRadius:'50%',background:step===i?'#1976d2':'#eee',color:step===i?'#fff':'#888',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:'bold',fontSize:'1.1em'}}>{i}</div>
+          ))}
+        </div>
+        <div className="step-content">
+          {content}
+        </div>
       </div>
-      <div className="step-content" style={{marginBottom:32}}>
-        {content}
-      </div>
-      <div className="button-group" style={{display:'flex',justifyContent:'center',gap:16}}>
+      <div className="button-bar" style={{ height: 80, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 24px', width: '100%' }}>
         <button className="btn btn-exit" onClick={onExitOrPrev}>{step===1?'나가기':'이전단계'}</button>
         <button className="btn btn-next" onClick={onNext}>{step<4?'다음단계':'완료'}</button>
       </div>
