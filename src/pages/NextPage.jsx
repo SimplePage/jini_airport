@@ -208,8 +208,8 @@ export default function NextPage() {
           {content}
         </div>
       </div>
-      <div className="button-bar" style={{ height: 80, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 24px', width: '100%' }}>
-        <button className="btn btn-exit" onClick={onExitOrPrev}>{step===1?'나가기':'이전단계'}</button>
+      <div className="button-bar">
+        {/* <button className="btn btn-exit" onClick={onExitOrPrev}>{step===1?'나가기':'이전단계'}</button> */}
         <button className="btn btn-next" onClick={onNext}>{step<4?'다음단계':'완료'}</button>
       </div>
     </div>

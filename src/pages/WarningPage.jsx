@@ -3,6 +3,7 @@ import './warning.css';
 import './common.css';
 import { useNavigate } from 'react-router-dom';
 import ready from '../assets/ready.png';
+import background from '../assets/background.jpg';
 
 export default function WarningPage() {
   const [flash, setFlash] = useState(false);
@@ -19,7 +20,8 @@ export default function WarningPage() {
   return (
     <div
       className="warning-page"
-      style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
+      style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center',
+       minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden', width: '100vw' }}
     >
       {/* 이미지 영역 */}
       <div
@@ -50,18 +52,10 @@ export default function WarningPage() {
       {/* 버튼 영역 */}
       <div
         className="button-bar"
-        style={{
-          height: 80,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '0 24px',
-          width: '100%',
-        }}
       >
-        <button className="btn btn-exit" onClick={() => navigate('/')}>
+        {/* <button className="btn btn-exit" onClick={() => navigate('/')}>
           나가기
-        </button>
+        </button> */}
         <button className="btn btn-next" onClick={() => navigate('/next')}>
           다음단계
         </button>
