@@ -7,6 +7,8 @@ import cn from '../assets/cn.png';
 import jp from '../assets/jp.png';
 import us from '../assets/us.png';
 import plane from '../assets/plane.png';
+import cloud from '../assets/cloud.png';
+import background from '../assets/background.jpg';
 
 const countries = [
   { code: 'KR', name: '한국', flag: kr },
@@ -197,11 +199,27 @@ export default function NextPage() {
   else content = renderStep4();
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', width: '100vw', backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2em' }}>
         <div className="step-indicator" style={{display:'flex',justifyContent:'center',gap:8,marginBottom:24}}>
           {[1,2,3,4].map(i => (
-            <div key={i} className={`step${step===i?' active':''}`} style={{width:32,height:32,borderRadius:'50%',background:step===i?'#1976d2':'#eee',color:step===i?'#fff':'#888',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:'bold',fontSize:'1.1em'}}>{i}</div>
+            <div key={i} 
+              className={`step${step===i?' active':''}`} 
+              style={{
+                width:32,
+                height:32,
+                borderRadius:'50%',
+                background:step===i?'#1976d2':'#eee',
+                color:step===i?'#fff':'#888',
+                display:'flex',
+                alignItems:'center',
+                justifyContent:'center',
+                fontWeight:'bold',
+                fontSize:'1.1em'
+              }}
+            >
+              {i}
+            </div>
           ))}
         </div>
         <div className="step-content">
