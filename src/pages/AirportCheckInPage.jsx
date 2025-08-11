@@ -9,7 +9,6 @@ import yellow from '../assets/yellow.png';
 import green from '../assets/green.png';
 import blue from '../assets/blue.png';
 import puple from '../assets/puple.png';
-import background from '../assets/background.jpg';
 
 export default function AirportCheckInPage() {
   const navigate = useNavigate();
@@ -84,8 +83,8 @@ export default function AirportCheckInPage() {
           </div>
         </div>
       )}
-      <div className="clouds"
-        style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <div className="clouds">
+        {/* style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}> */}
         <div className="cloud" style={{backgroundImage: `url(${cloud})`}}></div>
         <div className="cloud" style={{backgroundImage: `url(${cloud})`}}></div>
         <div className="cloud" style={{backgroundImage: `url(${cloud})`}}></div>

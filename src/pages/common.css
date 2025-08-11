@@ -162,6 +162,7 @@ select:focus {
   object-fit: contain;
   cursor: pointer;
   transition: transform 0.2s ease;
+  border-radius: 10px;
 }
 
 .button-bar {

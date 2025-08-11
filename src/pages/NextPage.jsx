@@ -8,7 +8,6 @@ import jp from '../assets/jp.png';
 import us from '../assets/us.png';
 import plane from '../assets/plane.png';
 import cloud from '../assets/cloud.png';
-import background from '../assets/background.jpg';
 
 const countries = [
   { code: 'KR', name: '한국', flag: kr },
@@ -199,7 +198,7 @@ export default function NextPage() {
   else content = renderStep4();
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', width: '100vw', backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', width: '100vw' }}>
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2em' }}>
         <div className="step-indicator" style={{display:'flex',justifyContent:'center',gap:8,marginBottom:24}}>
           {[1,2,3,4].map(i => (

@@ -3,7 +3,6 @@ import './warning.css';
 import './common.css';
 import { useNavigate } from 'react-router-dom';
 import ready from '../assets/ready.png';
-import background from '../assets/background.jpg';
 
 export default function WarningPage() {
   const [flash, setFlash] = useState(false);
@@ -20,8 +19,7 @@ export default function WarningPage() {
   return (
     <div
       className="warning-page"
-      style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center',
-       minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden', width: '100vw' }}
+      style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden', width: '100vw' }}
     >
       {/* 이미지 영역 */}
       <div
@@ -32,6 +30,7 @@ export default function WarningPage() {
           alignItems: 'center',
           justifyContent: 'center',
           position: 'relative', // 플래시 효과가 이미지 위에 오도록 설정
+          flexDirection: 'column'
         }}
         onClick={handleImageClick} // 이미지 클릭 시 플래시 효과 발생
       >
@@ -39,7 +38,7 @@ export default function WarningPage() {
           src={ready}
           alt="ready"
           style={{
-            maxWidth: '90vw',
+            maxWidth: '315px',
             maxHeight: 'calc(100vh - 120px)',
             width: '100%',
             height: 'auto',
@@ -47,6 +46,15 @@ export default function WarningPage() {
             cursor: 'pointer',
           }}
         />
+        <h2 
+          style={{
+           alignItems: 'center',
+           textAlign: 'center',
+          //  marginTop:'10px'
+          }}>
+          <span>여권과 비행기 표를</span><br />
+          <span>준비해 주세요!</span>
+        </h2>
       </div>
 
       {/* 버튼 영역 */}
