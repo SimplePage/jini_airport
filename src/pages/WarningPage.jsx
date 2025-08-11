@@ -3,6 +3,7 @@ import './warning.css';
 import './common.css';
 import { useNavigate } from 'react-router-dom';
 import ready from '../assets/ready.png';
+import cloud from '../assets/cloud.png';
 
 export default function WarningPage() {
   const [flash, setFlash] = useState(false);
@@ -17,6 +18,13 @@ export default function WarningPage() {
   };
 
   return (
+    <>
+      <div className="clouds">
+        {/* style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}> */}
+        <div className="cloud" style={{backgroundImage: `url(${cloud})`}}></div>
+        <div className="cloud" style={{backgroundImage: `url(${cloud})`}}></div>
+        <div className="cloud" style={{backgroundImage: `url(${cloud})`}}></div>
+      </div>
     <div
       className="warning-page"
       style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden', width: '100vw' }}
@@ -69,5 +77,6 @@ export default function WarningPage() {
         </button>
       </div>
     </div>
+    </>
   );
 }

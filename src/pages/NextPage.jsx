@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './next.css';
 import './common.css';
 import kr from '../assets/kr.png';
-import cn from '../assets/cn.png';
+import jeju from '../assets/jeju.png';
 import jp from '../assets/jp.png';
 import us from '../assets/us.png';
 import plane from '../assets/plane.png';
@@ -11,7 +11,7 @@ import cloud from '../assets/cloud.png';
 
 const countries = [
   { code: 'KR', name: '한국', flag: kr },
-  { code: 'CN', name: '중국', flag: cn },
+  { code: 'JEJU', name: '제주도', flag: jeju },
   { code: 'JP', name: '일본', flag: jp },
   { code: 'US', name: '미국', flag: us }
 ];
@@ -153,8 +153,8 @@ export default function NextPage() {
                 height:60,
                 transition:'transform 2s cubic-bezier(0.4,1,0.7,1)',
                 transform: planeAnim
-                  ? 'translateX(120px) translateY(-60px) scale(1.2) rotate(-10deg)'
-                  : 'translateX(0)'
+                  ? 'translateX(120px) translateY(-60px) scale(1.2) rotate(-10deg) scaleX(-1)'
+                  : 'translateX(0) scaleX(-1)'
               }}
             />
           </div>
@@ -198,37 +198,45 @@ export default function NextPage() {
   else content = renderStep4();
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', width: '100vw' }}>
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2em' }}>
-        <div className="step-indicator" style={{display:'flex',justifyContent:'center',gap:8,marginBottom:24}}>
-          {[1,2,3,4].map(i => (
-            <div key={i} 
-              className={`step${step===i?' active':''}`} 
-              style={{
-                width:32,
-                height:32,
-                borderRadius:'50%',
-                background:step===i?'#1976d2':'#eee',
-                color:step===i?'#fff':'#888',
-                display:'flex',
-                alignItems:'center',
-                justifyContent:'center',
-                fontWeight:'bold',
-                fontSize:'1.1em'
-              }}
-            >
-              {i}
-            </div>
-          ))}
+    <>
+       <div className="clouds">
+        {/* style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center' }}> */}
+        <div className="cloud" style={{backgroundImage: `url(${cloud})`}}></div>
+        <div className="cloud" style={{backgroundImage: `url(${cloud})`}}></div>
+        <div className="cloud" style={{backgroundImage: `url(${cloud})`}}></div>
+      </div>
+      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', width: '100vw' }}>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2em' }}>
+          <div className="step-indicator" style={{display:'flex',justifyContent:'center',gap:8,marginBottom:24}}>
+            {[1,2,3,4].map(i => (
+              <div key={i} 
+                className={`step${step===i?' active':''}`} 
+                style={{
+                  width:32,
+                  height:32,
+                  borderRadius:'50%',
+                  background:step===i?'#1976d2':'#eee',
+                  color:step===i?'#fff':'#888',
+                  display:'flex',
+                  alignItems:'center',
+                  justifyContent:'center',
+                  fontWeight:'bold',
+                  fontSize:'1.1em'
+                }}
+              >
+                {i}
+              </div>
+            ))}
+          </div>
+          <div className="step-content">
+            {content}
+          </div>
         </div>
-        <div className="step-content">
-          {content}
+        <div className="button-bar">
+          {/* <button className="btn btn-exit" onClick={onExitOrPrev}>{step===1?'나가기':'이전단계'}</button> */}
+          <button className="btn btn-next" onClick={onNext}>{step<4?'다음단계':'완료'}</button>
         </div>
       </div>
-      <div className="button-bar">
-        {/* <button className="btn btn-exit" onClick={onExitOrPrev}>{step===1?'나가기':'이전단계'}</button> */}
-        <button className="btn btn-next" onClick={onNext}>{step<4?'다음단계':'완료'}</button>
-      </div>
-    </div>
+    </>
   );
 } 
