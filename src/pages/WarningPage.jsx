@@ -63,18 +63,16 @@ export default function WarningPage() {
           <span>여권과 비행기 표를</span><br />
           <span>준비해 주세요!</span>
         </h2>
-      </div>
 
-      {/* 버튼 영역 */}
-      <div
-        className="button-bar"
-      >
+        {/* 버튼 영역 */}
+        <div className="button-bar" >
         {/* <button className="btn btn-exit" onClick={() => navigate('/')}>
           나가기
         </button> */}
-        <button className="btn btn-next" onClick={() => navigate('/next')}>
-          다음단계
-        </button>
+          <button className="btn btn-next" onClick={() => navigate('/next')}>
+            다음단계
+          </button>
+        </div>
       </div>
     </div>
     </>
